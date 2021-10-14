@@ -1,0 +1,47 @@
+﻿<Window x:Class="TuevRacer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TuevRacer"
+        mc:Ignorable="d"
+        Title="TÜV-Racer" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Canvas Width="800" Height="600">
+        <Rectangle Width="800" Height="600">
+            <Rectangle.Fill>
+                <ImageBrush x:Name="brushGrass" ImageSource="pack://application:,,,/Images/grass.png" TileMode="Tile" Viewport="0,0,128,128" ViewportUnits="Absolute"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Canvas.Left="128" Width="544" Height="600">
+            <Rectangle.Fill>
+                <ImageBrush x:Name="brushRoad" ImageSource="pack://application:,,,/Images/road.png" TileMode="Tile" Viewport="0,0,544,128" ViewportUnits="Absolute"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Image Name="imagePlayer" Source="pack://application:,,,/Images/player-tuev.png" Width="70" Height="121" Canvas.Left="365" Canvas.Bottom="10" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="playerTransform" Angle="0"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="imageDekra" Source="pack://application:,,,/Images/car-dekra.png" Width="71" Height="116" Canvas.Left="148" Canvas.Bottom="-116"/>
+        <Image Name="imageGtu" Source="pack://application:,,,/Images/car-gtu.png" Width="70" Height="131" Canvas.Left="219" Canvas.Bottom="-131"/>
+        <Image Name="imageTuvsud" Source="pack://application:,,,/Images/car-tuvsud.png" Width="71" Height="131" Canvas.Left="289" Canvas.Bottom="-131"/>
+
+        <Rectangle x:Name="rectExplosion" Width="160" Height="160" Visibility="Hidden">
+            <Rectangle.Fill>
+                <ImageBrush x:Name="brushExplosion" ImageSource="pack://application:,,,/Images/explosion.png" Stretch="Fill" Viewbox="0,0,1,0.25"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <TextBlock Canvas.Right="0" Canvas.Top="10" Foreground="White" FontWeight="Bold" FontSize="40" TextAlignment="Center" Width="128">
+            <Run Name="textDistance" Text="0,0"/><LineBreak/>
+            <Run>km</Run>
+        </TextBlock>
+
+        <TextBlock Canvas.Right="0" Canvas.Bottom="10" Foreground="White" FontWeight="Bold" FontSize="40" TextAlignment="Center" Width="128">
+            <Run Name="textSpeed" Text="60,0"/><LineBreak/>
+            <Run>km/h</Run>
+        </TextBlock>
+    </Canvas>
+</Window>

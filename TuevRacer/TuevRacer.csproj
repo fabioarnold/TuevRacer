@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\car-dekra.png" />
+    <None Remove="Images\car-gtu.png" />
+    <None Remove="Images\car-tuvsud.png" />
+    <None Remove="Images\explosion.png" />
+    <None Remove="Images\grass.png" />
+    <None Remove="Images\player-tuev.png" />
+    <None Remove="Images\road.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\car-dekra.png" />
+    <Resource Include="Images\car-gtu.png" />
+    <Resource Include="Images\car-tuvsud.png" />
+    <Resource Include="Images\explosion.png" />
+    <Resource Include="Images\grass.png" />
+    <Resource Include="Images\player-tuev.png" />
+    <Resource Include="Images\road.png" />
+  </ItemGroup>
+
+</Project>
