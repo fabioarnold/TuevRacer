@@ -98,8 +98,9 @@ namespace TuevRacer
                 playerSpeedKmh += 0.5 * deltaTime.TotalSeconds; // increase by 1 km/h every two seconds
 
                 playerTransform.Angle = 0;
-                if (Keyboard.IsKeyDown(Key.Left)) { playerX -= 10 * (50 + 0.1 * playerSpeedKmh) * deltaTime.TotalSeconds; playerTransform.Angle = -6; }
-                if (Keyboard.IsKeyDown(Key.Right)) { playerX += 10 * (50 + 0.1 * playerSpeedKmh) * deltaTime.TotalSeconds; playerTransform.Angle = 6; }
+                (bool moveLeft, bool moveRight) = ReadInput();
+                if (moveLeft) { playerX -= 10 * (50 + 0.3 * playerSpeedKmh) * deltaTime.TotalSeconds; playerTransform.Angle = -6; }
+                if (moveRight) { playerX += 10 * (50 + 0.3 * playerSpeedKmh) * deltaTime.TotalSeconds; playerTransform.Angle = 6; }
                 if (playerX < borderWidth) { playerX = borderWidth; playerTransform.Angle = 0; }
                 if (playerX > screenWidth - borderWidth - playerWidth) { playerX = screenWidth - borderWidth - playerWidth; playerTransform.Angle = 0; }
 
@@ -133,6 +134,21 @@ namespace TuevRacer
                 textSpeed.Text = $"{playerSpeedKmh:F1}";
                 textDistance.Text = $"{playerDistanceKm:F2}";
             }
+        }
+
+        private (bool moveLeft, bool moveRight) ReadInput()
+        {
+            bool moveLeft = Keyboard.IsKeyDown(Key.Left);
+            bool moveRight = Keyboard.IsKeyDown(Key.Right);
+
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                var pos = Mouse.GetPosition(this);
+                if (pos.X < 0.5 * ActualWidth) moveLeft = true;
+                if (pos.X > 0.5 * ActualWidth) moveRight = true;
+            }
+
+            return (moveLeft, moveRight);
         }
 
         private void SpawnCar()
